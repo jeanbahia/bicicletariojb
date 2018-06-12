@@ -1,9 +1,11 @@
 package br.com.bicicletariojb.model;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CollectionTable;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,7 +19,9 @@ import javax.persistence.OneToMany;
 import br.com.bicicletariojb.model.enums.PerfilEnum;
 
 @Entity
-public class Usuario {
+public class Usuario implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,17 +29,18 @@ public class Usuario {
 
 	private String nome;
 
+	@Column(unique = true)
 	private String CPF;
 
 	@ElementCollection
 	@CollectionTable(name = "TELEFONE")
 	private Set<String> telefone;
 
-	private PerfilEnum perfil;
+	private Integer perfil;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_endereco")
-	private Endreco endereco;
+	private Endereco endereco;
 
 	@OneToMany(mappedBy = "usuario")
 	private List<Bicicleta> bicicletas;
@@ -53,7 +58,7 @@ public class Usuario {
 	}
 
 	public PerfilEnum getPerfil() {
-		return perfil;
+		return PerfilEnum.obterPorCodigo(perfil);
 	}
 
 	public void setId(Long id) {
@@ -69,14 +74,14 @@ public class Usuario {
 	}
 
 	public void setPerfil(PerfilEnum perfil) {
-		this.perfil = perfil;
+		this.perfil = perfil.getCodigo();
 	}
 
-	public Endreco getEndereco() {
+	public Endereco getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(Endreco endereco) {
+	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
 
@@ -95,4 +100,5 @@ public class Usuario {
 	public void setTelefone(Set<String> telefone) {
 		this.telefone = telefone;
 	}
+
 }

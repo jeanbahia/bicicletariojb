@@ -2,19 +2,18 @@ package br.com.bicicletariojb.model.enums;
 
 public enum PerfilEnum {
 
-	PERFIL_CLIENTE("1", "Cliente"), 
-	PERFIL_ADMINISTRADOR("2", "Administrador");
+	PERFIL_CLIENTE(1, "Cliente"), PERFIL_ADMINISTRADOR(2, "Administrador");
 
-	private String codigo;
+	private Integer codigo;
 
 	private String descricao;
 
-	private PerfilEnum(String codigo, String descricao) {
+	private PerfilEnum(Integer codigo, String descricao) {
 		this.codigo = codigo;
 		this.descricao = descricao;
 	}
 
-	public String getCodigo() {
+	public Integer getCodigo() {
 		return codigo;
 	}
 
@@ -22,7 +21,7 @@ public enum PerfilEnum {
 		return descricao;
 	}
 
-	public void setCodigo(String codigo) {
+	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
 
@@ -30,7 +29,7 @@ public enum PerfilEnum {
 		this.descricao = descricao;
 	}
 
-	public PerfilEnum obterPorCodigo(String codigo) {
+	public static PerfilEnum obterPorCodigo(Integer codigo) {
 
 		for (PerfilEnum perfil : PerfilEnum.values()) {
 
@@ -38,7 +37,7 @@ public enum PerfilEnum {
 				return perfil;
 			}
 		}
-		
+
 		throw new IllegalArgumentException("Perfil inválido");
 	}
 }
