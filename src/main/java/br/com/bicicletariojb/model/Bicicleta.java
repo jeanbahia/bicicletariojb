@@ -10,13 +10,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Bicicleta implements Serializable{
+public class Bicicleta implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long Id;
+	private Long id;
 
 	private String modelo;
 
@@ -25,10 +25,6 @@ public class Bicicleta implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
-
-	public long getId() {
-		return Id;
-	}
 
 	public String getModelo() {
 		return modelo;
@@ -42,10 +38,6 @@ public class Bicicleta implements Serializable{
 		return usuario;
 	}
 
-	public void setId(long id) {
-		Id = id;
-	}
-
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
 	}
@@ -57,5 +49,13 @@ public class Bicicleta implements Serializable{
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 }
