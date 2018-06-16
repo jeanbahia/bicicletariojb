@@ -20,7 +20,7 @@ public class UsuarioBuilder {
 	}
 
 	public UsuarioBuilder cpf(String cpf) {
-		this.usuario.setCPF(cpf);
+		this.usuario.setCpf(cpf);
 		return this;
 	}
 

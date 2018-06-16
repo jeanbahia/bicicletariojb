@@ -1,21 +1,9 @@
-package br.com.bicicletariojb.model;
+package br.com.bicicletariojb.model.dto;
 
-import java.io.Serializable;
-import java.util.List;
+import br.com.bicicletariojb.model.Endereco;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+public class EnderecoDTO {
 
-@Entity
-public class Endereco implements Serializable{
-
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	private String uf;
@@ -28,10 +16,17 @@ public class Endereco implements Serializable{
 
 	private String complemento;
 
-	private String numero;
+	public EnderecoDTO() {
+	}
 
-	@OneToMany(mappedBy = "endereco")
-	private List<Usuario> usuarios;
+	public EnderecoDTO(Endereco endereco) {
+		this.id = endereco.getId();
+		this.uf = endereco.getUf();
+		this.bairro = endereco.getBairro();
+		this.rua = endereco.getRua();
+		this.logradouro = endereco.getLogradouro();
+		this.complemento = endereco.getComplemento();
+	}
 
 	public Long getId() {
 		return id;
@@ -55,10 +50,6 @@ public class Endereco implements Serializable{
 
 	public String getComplemento() {
 		return complemento;
-	}
-
-	public String getNumero() {
-		return numero;
 	}
 
 	public void setId(Long id) {
@@ -85,15 +76,4 @@ public class Endereco implements Serializable{
 		this.complemento = complemento;
 	}
 
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
-
-	public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
-
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
 }

@@ -16,8 +16,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import br.com.bicicletariojb.model.enums.PerfilEnum;
 
 @Entity
@@ -32,7 +30,7 @@ public class Usuario implements Serializable {
 	private String nome;
 
 	@Column(unique = true)
-	private String CPF;
+	private String cpf;
 
 	@ElementCollection
 	@CollectionTable(name = "TELEFONE")
@@ -40,7 +38,6 @@ public class Usuario implements Serializable {
 
 	private Integer perfil;
 
-	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_endereco")
 	private Endereco endereco;
@@ -56,8 +53,12 @@ public class Usuario implements Serializable {
 		return nome;
 	}
 
-	public String getCPF() {
-		return CPF;
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public PerfilEnum getPerfil() {
@@ -70,10 +71,6 @@ public class Usuario implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public void setCPF(String cPF) {
-		CPF = cPF;
 	}
 
 	public void setPerfil(PerfilEnum perfil) {

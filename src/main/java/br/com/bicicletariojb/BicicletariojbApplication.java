@@ -37,7 +37,7 @@ public class BicicletariojbApplication implements CommandLineRunner{
 				
 		enderecoBuilder = new EnderecoBuilder();
 		
-		Endereco endereco2 = enderecoBuilder.bairro("Senador Dntas").numero("17").rua("Rua da Felicidade").uf("RJ").build();
+		Endereco endereco2 = enderecoBuilder.bairro("Senador Dantas").numero("17").rua("Rua da Felicidade").uf("RJ").build();
 		
 		enderecoRepository.saveAll(Arrays.asList(endereco1, endereco2));
 		
