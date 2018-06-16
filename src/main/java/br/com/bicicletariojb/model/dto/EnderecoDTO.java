@@ -16,6 +16,8 @@ public class EnderecoDTO {
 
 	private String complemento;
 
+	private String numero;
+
 	public EnderecoDTO() {
 	}
 
@@ -26,6 +28,7 @@ public class EnderecoDTO {
 		this.rua = endereco.getRua();
 		this.logradouro = endereco.getLogradouro();
 		this.complemento = endereco.getComplemento();
+		this.numero = endereco.getNumero();
 	}
 
 	public Long getId() {
@@ -76,4 +79,11 @@ public class EnderecoDTO {
 		this.complemento = complemento;
 	}
 
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
 }

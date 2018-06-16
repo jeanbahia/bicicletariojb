@@ -15,8 +15,21 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
+	@Autowired
+	private EnderecoService enderecoService;
+
 	public UsuarioDTO find(Long id) {
 		Optional<Usuario> usuario = usuarioRepository.findById(id);
 		return new UsuarioDTO(usuario.orElse(null));
+	}
+
+	public Usuario save(Usuario usuario) {
+		
+		usuario.setId(null);
+		
+		enderecoService.save(usuario.getEndereco());
+		usuarioRepository.save(usuario);
+		
+		return usuario;
 	}
 }

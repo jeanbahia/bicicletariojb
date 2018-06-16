@@ -19,7 +19,7 @@ public class UsuarioDTO {
 	@Column(unique = true)
 	private String cpf;
 
-	private EnderecoDTO enderecoDTO;
+	private EnderecoDTO endereco;
 
 	public UsuarioDTO() {
 	}
@@ -33,7 +33,7 @@ public class UsuarioDTO {
 		this.cpf = usuario.getCpf();
 
 		if (usuario.getEndereco() != null) {
-			this.enderecoDTO = new EnderecoDTO(usuario.getEndereco());
+			this.endereco = new EnderecoDTO(usuario.getEndereco());
 		}
 	}
 
@@ -57,8 +57,8 @@ public class UsuarioDTO {
 		return cpf;
 	}
 
-	public EnderecoDTO getEnderecoDTO() {
-		return enderecoDTO;
+	public EnderecoDTO getEndereco() {
+		return endereco;
 	}
 
 	public void setId(Long id) {
@@ -81,8 +81,8 @@ public class UsuarioDTO {
 		this.cpf = cpf;
 	}
 
-	public void setEnderecoDTO(EnderecoDTO enderecoDTO) {
-		this.enderecoDTO = enderecoDTO;
+	public void setEndereco(EnderecoDTO endereco) {
+		this.endereco = endereco;
 	}
 
 }
